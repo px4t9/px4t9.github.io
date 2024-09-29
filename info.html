@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="px.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9 - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d8b0ff; /* Purple color for the logo */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d8b0ff; /* Purple hover effect */
+        }
+
+        .hero {
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(50, 50, 120, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .faq-container {
+            background-color: #1b1b1b;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            color: #d0d0d0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            border-left: 5px solid #d8b0ff;
+        }
+
+        .faq-container h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d8b0ff; /* Purple color for header */
+            margin-bottom: 10px;
+        }
+
+        .faq-container p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background-color: #d8b0ff;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #b380ff;
+            transform: scale(1.05);
+        }
+
+        code {
+            background-color: #292929;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #d0d0d0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PX4T9</div>
+        <ul>
+            <li><a href="index.html">홈</a></li>
+            <li><a href="annc.html">공지사항</a></li>
+            <li><a href="info.html">질문</a></li>
+            <li><a href="terms.html">이용약관</a></li>
+            <li><a href="license.html">라이선스</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>PX4T9 - FAQ</h1>
+    </section>
+
+    <div class="container">
+        <div class="faq-container">
+            <h2>다운로드가 왜 차단되나요?</h2>
+            <p>윈도우 보안 프로그램 또는 다른 안티바이러스 소프트웨어가 활성화된 경우, 다운로드가 차단될 수 있습니다. 다운로드 전에 백신을 비활성화해 주세요.</p>
+        </div>
+
+        <div class="faq-container">
+            <h2>디스코드 RAT이 컴파일이 안되요.</h2>
+            <p>터미널을 열고 <code>pip uninstall enum34</code> 를 입력해 보세요.</p>
+        </div>
+
+        <div class="faq-container">
+            <h2>실행 파일 (.exe)를 이미지 파일(.png/.jpg...)로 어떻게 마스킹 하나요?</h2>
+            <p><a href="https://www.youtube.com/watch?v=cXEkSQl9wmw" class="download-btn">여기</a> 를 참고해보세요.</p>
+        </div>
+
+        <div class="faq-container">
+            <h2>프로그램 실행이 안되요.</h2>
+            <p>저의 프로그램은 파이썬을 사용합니다. 최신 버전의 파이썬을 <a href="https://www.python.org/downloads/" class="download-btn">여기</a> 서 설치해보세요.</p>
+        </div>
+
+        <div class="faq-container">
+            <h2>패키지 설치가 안되요.</h2>
+            <p>저의 프로그램을 사용하기 위해서는 파이썬을 설치해야 합니다. 최신 버전의 파이썬을 <a href="https://www.python.org/downloads/" class="download-btn">여기</a> 서 설치해보세요. 설치 후, 파이썬을 경로에 추가하고, pip툴 (패키지)을 다운로드해주세요.</p>
+        </div>
+    </div>
+
+</body>
+</html>
