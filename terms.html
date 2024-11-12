@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e; /* Single dark background color */
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c; /* Vertical line on the left */
+            border-right: 2px solid #563d7c; /* Vertical line on the right */
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #1f1a2e;
+            padding: 20px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            color: #d3d0e1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #563d7c;
+        }
+        .download-button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #ffffff;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #563d7c;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            text-align: left;
+        }
+        .footer-links h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .footer-links a {
+            color: #d3d0e1;
+            text-decoration: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d3d0e1;
+        }
+        /* General page styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c;
+            border-right: 2px solid #563d7c;
+            box-sizing: border-box;
+        }
+        
+        /* Popup modal styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+        .popup-content {
+            background-color: #2a2340;
+            color: #d3d0e1;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #563d7c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .popup-content p {
+            font-size: 14px;
+            color: #d3d0e1;
+        }
+        .popup-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+        .popup-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .popup-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .accept-btn {
+            background-color: #563d7c;
+            color: #ffffff;
+        }
+        .settings-btn {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        /* Show the popup when active */
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Updated CSS for "정보" Section without Hover Effect */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #2a2340;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .info-card h4 {
+            margin: 0;
+            color: #d3d0e1;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .info-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info-card a:hover {
+            color: #5b9bd5;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Section -->
+        <div class="header">
+            <div class="header-content">
+				<h1><img src="px.ico" alt="PX4T9 Logo" style="width: 30px; height: 30px;" /> PX4T9</h1>
+                <div class="nav">
+                   <a href="index.html#downloads">다운로드</a>
+                    <a href="license.html">라이선스</a>
+                    <a href="terms.html">이용약관</a>
+					<a href="index.html#info">사이트 정보</a>
+                </div>
+            </div>
+        </div>
+		
+        <!-- Content Section -->
+        <div class="content">
+		
+            <!-- Terms of Use Section -->
+            <div class="section" id="terms">
+                <h2>이용약관</h2>
+                <p>이 도구는 사이버 보안의 기초 원리와 모의해킹을 이해하고, 이를 통해 개인의 보안을 강화하기 위해 설계되었습니다. 본 도구의 사용 목적은 오로지 학습과 연구에 국한되며, 모든 형태의 불법적 활동, 악의적 목적, 타인의 시스템이나 데이터를 손상시키는 행위는 절대적으로 금지됩니다. 불법적인 해킹 시도는 법적 제한을 위반하는 행위로 간주되며, 이에 따라 발생하는 법적 문제나 책임은 전적으로 사용자 본인에게 있습니다.
+<br> </br>
+이 도구는 허가된 시스템 내에서의 테스트나 모의해킹 연구 목적으로만 활용되어야 하며, 타인의 시스템에 무단으로 접근하거나, 데이터를 무단으로 수집, 변조 또는 파괴하는 것은 법적으로 처벌받을 수 있는 심각한 범죄 행위에 해당합니다. 또한, 본 도구는 사이버 보안에 대한 연구, 교육 및 개인의 보안 향상을 위한 목적 외에는 사용할 수 없습니다.
+<br> </br>
+사용자는 이 도구를 사용하면서 기본적인 보안 수칙을 준수해야 하며, 본인의 시스템 보안을 철저히 관리해야 합니다. 이를 위해 최신 보안 패치를 설치하고, 바이러스 백신 소프트웨어를 항상 최신 상태로 유지하며, 안전한 네트워크 환경에서 도구를 사용하고, 불법적인 웹사이트나 피싱 공격으로부터 보호되는 환경을 유지해야 합니다.
+<br> </br>
+본 도구는 시스템을 테스트하는 데 필요한 다양한 기능을 제공하지만, 모든 테스트는 반드시 사용자 본인이 소유하거나 허가를 받은 시스템 내에서만 수행되어야 합니다. 이 도구는 특정 성능이나 안정성을 보장하지 않으며, 도구의 사용으로 인해 발생하는 직접적 또는 간접적 손해에 대해 제작자와 배포자는 아무런 책임을 지지 않습니다. 이러한 손해에는 시스템 장애, 데이터 손실, 서비스 중단 등 예기치 못한 상황에서의 피해가 포함됩니다.
+<br> </br>
+또한, 본 도구 사용 중 일부 사용자들에게는 광과민성 반응 등 신체적 위험이 있을 수 있습니다. 민감성 증후군이나 광과민성 발작, 혹은 빛에 민감한 기타 신체 반응을 보이는 사용자는 본 도구 사용을 자제하거나 의사의 조언을 받는 것이 좋습니다. 제작자와 배포자는 이러한 신체적 반응으로 인한 문제에 대해 책임을 지지 않으며, 사용자는 본인의 건강 상태를 고려하여 안전하게 사용해야 합니다.
+<br> </br>
+사용자는 도구 사용에 앞서 이러한 모든 제한 사항과 책임을 충분히 이해하고 동의해야 하며, 본 도구를 교육 목적으로만 사용하고 타인의 권리와 시스템을 침해하지 않도록 책임감 있게 사용하는 자세가 요구됩니다.</p>
+            </div>
+            
+
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="footer-links" id="contact">
+                <div>
+                    <h2>정보</h2>
+					<p>&copy; 2024 PX4T9</p>					
+					<p>Powered by GitHub</p>
+					<p>Powered by Python</p>
+                </div>
+                <div>
+                    <h3>문의하기</h3>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+                </div>
+                <div>
+                    <h3>커뮤니티</h3>
+					<p><a href="https://youtube.com/@px4t9">YouTube</a></p>
+					<p><a href="https://discord.gg/5CfsJkszNW">Discord (서비즈 종료됨)</a></p>
+					<p><a href="https://github.com/px4t9">Github</a></p>
+                </div>
+                <div>
+                    <h3>PX4T9</h3>
+					<p><a href="privacypolicy.html">개인정보 처리 방침</a></p>
+					<p><a href="terms.html">이용약관</a></p>
+					<p><a href="license.html">라이선스</a></p>
+                </div>
+        </div>
+		         <div>
+					<p>&copy; 2023 - 2024 PX4T9 - All Rights Reserved</p>
+			</div>
+    </div> <!-- End of Main Container -->
+    <script>
+        // Show the popup when the page loads
+        window.onload = function() {
+            document.getElementById("popupOverlay").classList.add("active");
+        };
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById("popupOverlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>
