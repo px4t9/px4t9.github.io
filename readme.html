@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fade In-Out</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            color: white;
+            text-align: center;
+        }
+        .fade-container {
+            position: relative;
+            font-size: 2rem;
+        }
+        .fade-text {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            position: absolute;
+            width: 100%;
+        }
+        .fade-text.active {
+            opacity: 1;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="fade-container">
+        <div id="text1" class="fade-text">Hi,</div>
+        <div id="text2" class="fade-text">Answer the questions and you get what you want.</div>
+        <div id="text3" class="fade-text">
+            Do you think Andrin is a GYATTTTT?
+            <div class="options">
+                <button onclick="handleResponse('yes')">Yes</button>
+                <button onclick="handleResponse('no')">No</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const texts = document.querySelectorAll('.fade-text');
+        let index = 0;
+
+        function showNextText() {
+            texts[index].classList.remove('active');
+            index = (index + 1) % texts.length;
+            texts[index].classList.add('active');
+
+            if (index !== texts.length - 1) {
+                setTimeout(showNextText, 3000); // Adjust display time (3s)
+            }
+        }
+
+        function handleResponse(answer) {
+            if (answer === 'yes') {
+                window.location.href = 'vocab.html';
+            } else {
+                window.location.href = 'conditionserr.html';
+            }
+        }
+
+        // Start fade-in-out animation
+        texts[index].classList.add('active');
+        setTimeout(showNextText, 3000);
+    </script>
+</body>
+</html>
