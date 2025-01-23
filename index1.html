@@ -3,86 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>점검중</title>
+    <title>PX4T9 - 점검중</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2e004f; /* 다크 퍼플 배경색 */
-            color: #ffffff;
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
         }
 
-        .container {
-            max-width: 600px;
-            width: 90%;
-            padding: 30px;
-            border-radius: 15px;
-            background: linear-gradient(145deg, #3a005c, #240036);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(255, 255, 255, 0.1);
+        .content {
+            max-width: 90%;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: #bb86fc; /* 밝은 퍼플 텍스트 */
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        .content img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
         }
 
-        p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #e0c3fc;
+        .content h1 {
+            font-size: 1.5rem;
+            color: #bb86fc;
+            margin: 15px 0;
+        }
+
+        .content p {
+            font-size: 1rem;
             line-height: 1.5;
+            margin-bottom: 10px;
+            color: #e0c3fc;
         }
 
         ul {
-            list-style: none;
+            list-style: disc;
             padding: 0;
+            margin: 0 auto;
+            display: inline-block; /* 블릿포인트를 가운데 정렬 */
+            text-align: left; /* 블릿포인트는 왼쪽 정렬 */
         }
 
-        li {
-            font-size: 1.2rem;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        li:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        ul li {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 5px;
+            color: #e0c3fc;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
+            .content img {
+                width: 120px;
             }
 
-            p {
-                font-size: 1.1rem;
+            .content h1 {
+                font-size: 1.2rem;
             }
 
-            li {
-                font-size: 1rem;
+            .content p {
+                font-size: 0.9rem;
+            }
+
+            ul li {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>점검중 입니다.</h1>
-        <p>2025년 1월 16일 - 2025년 2월 16일</p>
-        <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: #d1a3ff;">점검 내역:</h2>
-        <ul>
-            <li>서비스 안정화</li>
-            <li>툴 점검</li>
-        </ul>
+    <div class="content">
+        <img src="maintenance.png" alt="Maintenance Icon">
+        <h2>점검중 입니다.</h2>
+		<h4>이용에 불편을 드려 죄송합니다.</h4>
+        <h5>2025년 1월 16일 - 2025년 2월 16일</h5>
     </div>
 </body>
 </html>
