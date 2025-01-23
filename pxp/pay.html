@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1f1a2e;
+            color: #ffffff;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #2a2340;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #d3d0e1;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #563d7c;
+            border-radius: 5px;
+            background-color: #1f1a2e;
+            color: #ffffff;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            color: #d3d0e1;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #6a4cae;
+        }
+
+        .info-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #2a2340;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #d3d0e1;
+        }
+
+        .info-container p {
+            margin: 5px 0;
+        }
+
+        .info-container a {
+            color: #5b9bd5;
+            text-decoration: none;
+        }
+
+        .info-container a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1f1a2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #2a2340;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .header img {
+            width: 50px;
+            height: 50px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #b0aec5;
+            margin-top: 5px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #5b9bd5;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #563d7c;
+            margin: 15px 0;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #1f1a2e;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card a img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-card a img:hover {
+            opacity: 0.8;
+        }
+
+        .info-card h4 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            font-size: 14px;
+            color: #b0aec5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            border-top: 1px solid #563d7c;
+            padding-top: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #5b9bd5;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background-color: #2a2340;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-content h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .popup-content p {
+            font-size: 14px;
+            color: #b0aec5;
+            margin-bottom: 20px;
+        }
+
+        .popup-content a {
+            color: #5b9bd5;
+            text-decoration: none;
+        }
+
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+
+        .popup-buttons button {
+            background-color: #563d7c;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .popup-buttons button:hover {
+            background-color: #6a4cae;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+	
+        <!-- Header -->
+        <div class="header">
+            <img src="px.ico" alt="Logo">
+            <h1>ORDER FORM</h1>
+            <p class="tagline">Please download the filled information and contact us at the address below. If downloading fails, take a screenshot. Ensure all details are captured, or the processing time may be delayed.</p>
+			            <p class="tagline">Discord: @px4t9_79638 | Instagram: @px4t9.support | Email: px4t9.px4t9@gmail.com</p>
+            <hr class="divider">
+            <div class="nav">
+                <a href="index.html#service">Service</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label for="name">*Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+            <label for="phone">*Phone Number:</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+            <label for="email">*Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="email">Account:</label>
+            <input type="text" id="name" placeholder="Enter your account">
+        </div>
+        <div class="form-group">
+            <label for="email">Password:</label>
+            <input type="text" id="name" placeholder="Enter your Password">
+        </div>		
+        <div class="form-group">
+            <label>*Desired Category:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="category" value="Gift Card" onclick="updateSubcategories()"> Gift Card</label>
+                <label><input type="checkbox" name="category" value="Game Items" onclick="updateSubcategories()"> Game Items</label>
+                <label><input type="checkbox" name="category" value="Crypto" onclick="updateSubcategories()"> Crypto</label>
+            </div>
+        </div>
+        <div class="form-group" id="subcategory-container">
+            <!-- Subcategories will be dynamically added here -->
+        </div>
+        <div class="button-container">
+            <button onclick="downloadForm()">Download</button>
+        </div>
+        <div class="info-container">
+			
+		        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 PX4T9 - All Rights Reserved</p>
+            <p>
+                <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="index.html#service">Services</a>
+            </p>
+        </div>
+    </div>
+    <script>
+        function updateSubcategories() {
+            const container = document.getElementById("subcategory-container");
+            container.innerHTML = ""; // Clear previous subcategories
+
+            const categories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            categories.forEach(category => {
+                if (category === "Gift Card") {
+                    container.innerHTML += `
+                        <label>Gift Card Options:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="Google Play"> Google Play</label>
+                            <label><input type="checkbox" value="Cultureland"> Cultureland</label>
+                            <label><input type="checkbox" value="Roblox"> Roblox</label>
+                            <label><input type="checkbox" value="Minecraft"> Minecraft</label>
+                            <label><input type="checkbox" value="Steam"> Steam</label>
+                        </div>
+                    `;
+                } else if (category === "Game Items") {
+                    container.innerHTML += `
+                        <label>Payment Method:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="Toss"> Toss</label>
+                            <label><input type="checkbox" value="KakaoPay"> KakaoPay</label>
+                            <label><input type="checkbox" value="Apple Pay"> Apple Pay</label>
+                            <label><input type="checkbox" value="Google Pay"> Google Pay</label>
+                        </div>
+                        <label for="game-service">Game/Service:</label>
+                        <input type="text" id="game-service" placeholder="Enter desired game or service">
+                    `;
+                } else if (category === "Crypto") {
+                    container.innerHTML += `
+                        <label>Crypto Options:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="BTC"> BTC</label>
+                            <label><input type="checkbox" value="ETC"> ETC</label>
+                            <label><input type="checkbox" value="ETH"> ETH</label>
+                            <label><input type="checkbox" value="XMR"> XMR</label>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function downloadForm() {
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+            const categories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(", ");
+            const subcategories = Array.from(document.querySelectorAll('#subcategory-container input:checked'))
+                .map(checkbox => checkbox.value)
+                .join(", ");
+            const gameService = document.getElementById("game-service")?.value || "";
+            const data = `
+Buyer Full Name: ${name}
+Buyer Phone Number: ${phone}
+Buyer Email: ${email}
+Desired Category: ${categories}
+Subcategories: ${subcategories}
+Game/Service: ${gameService}
+            `.trim();
+            const blob = new Blob([data], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Order_Form.txt";
+            link.click();
+        }
+    </script>
+</body>
+</html>

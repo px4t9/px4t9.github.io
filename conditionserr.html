@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e; /* Single dark background color */
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c; /* Vertical line on the left */
+            border-right: 2px solid #563d7c; /* Vertical line on the right */
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #1f1a2e;
+            padding: 20px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            color: #d3d0e1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #563d7c;
+        }
+        .download-button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #ffffff;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #563d7c;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            text-align: left;
+        }
+        .footer-links h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .footer-links a {
+            color: #d3d0e1;
+            text-decoration: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d3d0e1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Section -->
+        <div class="header">
+            <div class="header-content">
+				<h1><img src="px.ico" alt="PX4T9 Logo" style="width: 30px; height: 30px;" /> PX4T9</h1>
+                <div class="nav">
+                    <a href="main.html">홈</a>
+                    <a href="release.html">릴리즈</a>
+                    <a href="customrelease.html">커스텀 릴리즈</a>
+                    <a href="custombeta.html">커스텀 베타</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <div class="section" id="downloads">
+				<h1> :( </h1>
+                <h2>죄송합니다. <br></br>이용약관, 개인정보 처리 방침 및 라이선스 미동의로 인해 툴 사용이 제한됩니다.</h2>
+				<p> <a href="index.html#terms">이용약관, <a href="privacypolicy.html">개인정보 처리 방침</a></a> 및 <a href="index.html#license">라이선스</a>에 동의하신 후 다시 시도해주세요.</P>
+            </div>		
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="footer-links" id="contact">
+                <div>
+                    <h2>정보</h2>
+					<p>&copy; 2024 PX4T9</p>					
+					<p>Powered by GitHub</p>
+					<p>Powered by Python</p>
+                </div>
+                <div>
+                    <h3>문의하기</h3>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+                </div>
+                <div>
+                    <h3>커뮤니티</h3>
+					<p><a href="https://youtube.com/@px4t9">YouTube</a></p>
+					<p><a href="https://discord.gg/5CfsJkszNW">Discord (서비스 종료됨)</a></p>
+					<p><a href="https://github.com/px4t9">Github</a></p>
+                </div>
+                <div>
+                    <h3>PX4T9</h3>
+					<p><a href="privacypolicy.html">개인정보 처리 방침</a></p>
+					<p><a href="terms.html">이용약관</a></p>
+					<p><a href="license.html">라이선스</a></p>
+                </div>
+        </div>
+		         <div>
+					<p>&copy; 2023 - 2024 PX4T9 - All Rights Reserved</p>
+			</div>
+    </div> <!-- End of Main Container -->
+
+</body>
+</html>

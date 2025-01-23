@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 90%;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeIn 3s forwards, fadeOut 2s 5s forwards;
+            opacity: 0;
+        }
+
+        .content img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 auto 15px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            animation: fadeIn 3s forwards, fadeOut 2s 5s forwards; /* 애니메이션 수정 */
+            opacity: 0; /* 초기값 설정 */
+        }
+
+        .footer .ratings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Space between each icon */
+            margin-bottom: 10px;
+        }
+
+        .footer .ratings img {
+            width: 50px; /* Footer icon size */
+            height: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            .footer .ratings img {
+                width: 40px; /* Smaller size for mobile */
+            }
+
+            .content p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <img src="14.png" alt="14+">
+        <p>
+            본 소프트웨어는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 청소년 보호법,
+            및 관련 법률의 규정에 따라 만 14세 미만의 사용자는 이용할 수 없습니다.<br>
+            본 소프트웨어는 윤리적 해킹 및 사이버 보안 교육 목적에 한해 제공되며, 이를 악용할 경우 법적 책임이 따를 수 있습니다.
+            <br><br>
+            This software is not available for use by individuals under the age of 14,<br> in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection, the Youth Protection Act, and related laws.  
+            <br>This software is provided solely for the purpose of ethical hacking and cybersecurity education. Misuse of this software may result in legal consequences.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="ratings">
+            <img src="PEGI.png" alt="PEGI Rating (Europe)">
+            <img src="CERO.png" alt="CERO Rating (Japan)">
+            <img src="GRAC.png" alt="GRAC Rating (South Korea)">
+            <img src="ESRB.png" alt="ESRB Rating (US)">
+        </div>
+    </div>
+
+    <script>
+        // Redirect to main.html after fade out
+        setTimeout(() => {
+            window.location.href = 'main.html';
+        }, 8000); // Redirect after 8 seconds
+    </script>
+</body>
+</html>
