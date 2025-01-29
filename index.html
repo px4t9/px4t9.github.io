@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PX4T9</title>
     <style>
@@ -18,6 +18,7 @@
             flex-direction: column;
             height: 100vh;
             text-align: center;
+            position: relative;
         }
 
         .content {
@@ -25,8 +26,10 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            animation: fadeIn 3s forwards, fadeOut 2s 5s forwards;
+            position: absolute;
+            display: none; /* 처음에는 모든 페이지 숨김 */
             opacity: 0;
+            transition: opacity 1.5s ease-in-out;
         }
 
         .content img {
@@ -43,39 +46,38 @@
 
         .footer {
             margin-top: 20px;
-            animation: fadeIn 3s forwards, fadeOut 2s 5s forwards; /* 애니메이션 수정 */
-            opacity: 0; /* 초기값 설정 */
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
         }
 
         .footer .ratings {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* Space between each icon */
+            gap: 15px;
             margin-bottom: 10px;
         }
 
         .footer .ratings img {
-            width: 50px; /* Footer icon size */
+            width: 50px;
             height: auto;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .skip-button {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #6a5acd;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
+        .skip-button:hover {
+            background-color: #483d8b;
         }
 
         @media screen and (max-width: 768px) {
@@ -84,43 +86,101 @@
             }
 
             .footer .ratings img {
-                width: 40px; /* Smaller size for mobile */
+                width: 40px;
             }
 
             .content p {
                 font-size: 0.9rem;
             }
+
+            .skip-button {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="content">
+    <div class="content" id="page1">
         <img src="14.png" alt="14+">
         <p>
             본 소프트웨어는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 청소년 보호법,
             및 관련 법률의 규정에 따라 만 14세 미만의 사용자는 이용할 수 없습니다.<br>
             본 소프트웨어는 윤리적 해킹 및 사이버 보안 교육 목적에 한해 제공되며, 이를 악용할 경우 법적 책임이 따를 수 있습니다.
             <br><br>
-            This software is not available for use by individuals under the age of 14,<br> in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection, the Youth Protection Act, and related laws.  
-            <br>This software is provided solely for the purpose of ethical hacking and cybersecurity education. Misuse of this software may result in legal consequences.
+            This software is not available for use by individuals under the age of 14.<br>
+            This software is provided solely for ethical hacking and cybersecurity education. Misuse may result in legal consequences.
         </p>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="ratings">
-            <img src="PEGI.png" alt="PEGI Rating (Europe)">
-            <img src="CERO.png" alt="CERO Rating (Japan)">
-            <img src="GRAC.png" alt="GRAC Rating (South Korea)">
-            <img src="ESRB.png" alt="ESRB Rating (US)">
+        <div class="footer">
+            <div class="ratings">
+                <img src="PEGI.png" alt="PEGI Rating">
+                <img src="CERO.png" alt="CERO Rating">
+                <img src="GRAC.png" alt="GRAC Rating">
+                <img src="ESRB.png" alt="ESRB Rating">
+            </div>
         </div>
     </div>
 
+    <div class="content" id="page2">
+        <img src="euse.png" alt="14+">
+        <p>
+            본 소프트웨어는 교육 목적으로만 제작되었습니다.<br>
+            이를 불법적인 행위에 사용하는 경우, 해당 국가의 법률 및 부다페스트 사이버범죄 협약 등 국제법에 따라 엄중한 처벌을 받을 수 있습니다.
+            <br><br>
+            This software is intended for educational purposes only.<br>
+            Any illegal use may result in severe consequences under national and international law, including the Budapest Convention on Cybercrime.
+        </p>
+    </div>
+
+    <div class="content" id="page3">
+        <img src="harm.png" alt="14+">
+        <p>
+            해당 툴의 오용으로 발생한 모든 피해는 사용자 본인의 책임이며, PX4T9 제작진은 이에 대해 책임을 지지 않습니다.
+            <br><br>
+            All damages caused by misuse of this tool are solely the user's responsibility, and PX4T9 developers accept no liability.
+        </p>
+    </div>
+
+    <button class="skip-button" onclick="skipWarning()">경고 스킵</button>
+
     <script>
-        // Redirect to main.html after fade out
-        setTimeout(() => {
-            window.location.href = 'verf1.html';
-        }, 8000); // Redirect after 8 seconds
+        let pages = document.querySelectorAll('.content');
+        let currentIndex = 0;
+        let intervalTime = 6000; // 4초
+
+        function showPage(index) {
+            pages.forEach((page, i) => {
+                if (i === index) {
+                    page.style.display = "block";
+                    setTimeout(() => page.style.opacity = "1", 10); // 약간의 딜레이 추가
+                } else {
+                    page.style.opacity = "0";
+                    setTimeout(() => page.style.display = "none", 1500); // 페이드 아웃 후 숨김
+                }
+            });
+        }
+
+        function nextPage() {
+            if (currentIndex < pages.length - 1) {
+                setTimeout(() => {
+                    currentIndex++;
+                    showPage(currentIndex);
+                    nextPage();
+                }, intervalTime);
+            } else {
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, intervalTime);
+            }
+        }
+
+        function skipWarning() {
+            window.location.href = 'main.html';
+        }
+
+        // 첫 번째 페이지만 보이게 설정
+        showPage(0);
+        nextPage();
     </script>
 </body>
 </html>
