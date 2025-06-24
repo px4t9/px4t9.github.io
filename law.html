@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c;
+            border-right: 2px solid #563d7c;
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #1f1a2e;
+            padding: 20px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            color: #d3d0e1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #563d7c;
+        }
+        .download-button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #ffffff;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #563d7c;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            text-align: left;
+        }
+        .footer-links h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .footer-links a {
+            color: #d3d0e1;
+            text-decoration: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d3d0e1;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+        .popup-content {
+            background-color: #2a2340;
+            color: #d3d0e1;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #563d7c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .popup-content p {
+            font-size: 14px;
+        }
+        .popup-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .popup-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .accept-btn {
+            background-color: #563d7c;
+            color: #ffffff;
+        }
+        .settings-btn {
+            background-color: #333;
+            color: #ffffff;
+        }
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #2a2340;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .info-card h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="header-content">
+                <h1><img src="images/px.ico" alt="PX4T9 Logo" style="width: 30px; height: 30px;" /> PX4T9</h1>
+                <div class="nav">
+                    <a href="main.html">홈</a>
+                    <a href="privacypolicy.html">개인정보 처리 방침</a>
+                    <a href="terms.html">이용약관</a>
+                    <a href="license.html">라이선스</a>
+                    <a href="Law.html">사용자 보호 법률</a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h2>해킹 피해 관련 법률 보호</h2>
+            <p>저희는 사용자 여러분의 안전과 권리를 최우선으로 생각합니다.<br>
+            해킹 등 사이버 범죄로 인해 피해를 입은 사용자는 대한민국의 관련 법률에 따라 다음과 같은 보호를 받을 수 있습니다.</p>
+            <ul>
+                <li><strong>정보통신망 이용촉진 및 정보보호 등에 관한 법률</strong><br>해킹, 악성코드 유포, 불법 접속 등 사이버 침해행위에 대해 형사 처벌이 가능하며, 피해자는 민사상 손해배상을 청구할 수 있습니다.</li>
+                <li><strong>형법</strong><br>해킹으로 인한 업무방해, 사기, 강요 등의 행위는 형법상 범죄로 간주되며, 가해자는 징역 또는 벌금형에 처해질 수 있습니다.</li>
+                <li><strong>개인정보 보호법</strong><br>해킹으로 인해 개인정보가 유출된 경우, 피해자는 관련 기관에 대한 책임 요구 및 손해배상 청구가 가능합니다.</li>
+                <li><strong>전자금융거래법</strong><br>해킹을 통한 금융정보 탈취, 계좌 접근 등의 피해는 해당 금융기관의 책임을 물을 수 있으며, 피해자는 보상을 받을 권리가 있습니다.</li>
+                <li><strong>피해 발생 시 대응 절차</strong><br>1. 사이버범죄 신고: 경찰청 사이버수사국 또는 한국인터넷진흥원(KISA)<br>2. 법적 조치: 민사소송 또는 형사고소를 통해 손해배상 및 처벌 청구<br>3. 지원 요청: 개인정보보호위원회, 방송통신위원회 등 관계 기관에 피해 신고 및 구제 요청</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <div class="footer-links" id="contact">
+                <div>
+                    <h2>정보</h2>
+                    <p>&copy; 2025 PX4T9</p>
+                    <p>Powered by GitHub</p>
+                    <p>Powered by Python</p>
+                </div>
+                <div>
+                    <h3>문의하기</h3>
+                    <p>문의 서비스 종료됨</p>
+                    <p>문의 서비스 종료됨</p>
+                    <p>문의 서비스 종료됨</p>
+                </div>
+                <div>
+                    <h3>커뮤니티</h3>
+                    <p><a href="https://youtube.com/@px4t9">YouTube</a></p>
+                    <p><a href="https://discord.gg/5CfsJkszNW">Discord (서비스 종료됨)</a></p>
+                    <p><a href="https://github.com/px4t9">Github</a></p>
+                </div>
+                <div>
+                    <h3>PX4T9</h3>
+                    <p><a href="privacypolicy.html">개인정보 처리 방침</a></p>
+                    <p><a href="terms.html">이용약관</a></p>
+                    <p><a href="license.html">라이선스</a></p>
+                </div>
+            </div>
+            <div>
+                <p>&copy; 2023 - 2025 PX4T9 - All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            const popup = document.getElementById("popupOverlay");
+            if (popup) popup.classList.add("active");
+        };
+        function closePopup() {
+            const popup = document.getElementById("popupOverlay");
+            if (popup) popup.classList.remove("active");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e; /* Single dark background color */
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c; /* Vertical line on the left */
+            border-right: 2px solid #563d7c; /* Vertical line on the right */
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #1f1a2e;
+            padding: 20px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            color: #d3d0e1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #563d7c;
+        }
+        .download-button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #ffffff;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #563d7c;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            text-align: left;
+        }
+        .footer-links h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .footer-links a {
+            color: #d3d0e1;
+            text-decoration: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d3d0e1;
+        }
+        /* General page styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c;
+            border-right: 2px solid #563d7c;
+            box-sizing: border-box;
+        }
+        
+        /* Popup modal styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+        .popup-content {
+            background-color: #2a2340;
+            color: #d3d0e1;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #563d7c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .popup-content p {
+            font-size: 14px;
+            color: #d3d0e1;
+        }
+        .popup-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+        .popup-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .popup-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .accept-btn {
+            background-color: #563d7c;
+            color: #ffffff;
+        }
+        .settings-btn {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        /* Show the popup when active */
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Updated CSS for "정보" Section without Hover Effect */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #2a2340;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .info-card h4 {
+            margin: 0;
+            color: #d3d0e1;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .info-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info-card a:hover {
+            color: #5b9bd5;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+       <!-- Header Section -->
+        <div class="header">
+            <div class="header-content">
+				<h1><img src="images/px.ico" alt="PX4T9 Logo" style="width: 30px; height: 30px;" /> PX4T9</h1>
+                <div class="nav">
+				<a href="privacypolicy.html">개인정보 처리 방침</a>
+				<a href="terms.html">이용약관</a>
+                <a href="license.html">라이선스</a>
+				<a href="Law.html">사용자 보호 법룰</a>
+                </div>
+            </div>
+        </div>
+        <!-- Content Section -->
+        <div class="content">
+    <h2>서비스 중단 안내</h2>
+    
+    <p>PX4T9는 <strong>정보통신망법 제48조</strong> 및 관련 법률과 최근 몇 달간 저희 툴의 악용 사례가 지속적으로 제보됨에 따라, 서비스를 임시 중단하기로 결정하였습니다.
+서비스 재개는 내부 문제 해결 및 악용 방지를 위한 조치가 완료되고, 그 효과가 충분히 검증된 이후에 이뤄질 예정입니다.
+이 과정에는 다소 시간이 소요될 수 있는 점 양해 부탁드립니다.<br>관련 법률 및 서비스 중단 사유는 다음과 같습니다:
+        
+    </p>
+
+    <ul>
+        <li><strong>정보통신망법 제48조:</strong>
+<br><br>① 누구든지 정당한 접근권한 없이 또는 허용된 접근권한을 넘어 정보통신망에 침입하여서는 아니 된다.
+
+<br>② 누구든지 정당한 사유 없이 정보통신시스템, 데이터 또는 프로그램 등을 훼손ㆍ멸실ㆍ변경ㆍ위조하거나 그 운용을 방해할 수 있는 프로그램(이하 “악성프로그램”이라 한다)을 전달 또는 유포하여서는 아니 된다.
+
+<br>③ 누구든지 정보통신망의 안정적 운영을 방해할 목적으로 대량의 신호 또는 데이터를 보내거나 부정한 명령을 처리하도록 하는 등의 방법으로 정보통신망에 장애가 발생하게 하여서는 아니 된다.
+
+<br>④ 누구든지 정당한 사유 없이 정보통신망의 정상적인 보호ㆍ인증 절차를 우회하여 정보통신망에 접근할 수 있도록 하는 프로그램이나 기술적 장치 등을 정보통신망 또는 이와 관련된 정보시스템에 설치하거나 이를 전달ㆍ유포하여서는 아니 된다. </li>
+
+<br><br>
+
+        <li><strong>형법 제347조의2:</strong>
+<br><br>컴퓨터등 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 권한 없이 정보를 입력·변경하여 정보처리를 하게 함으로써 재산상의 이익을 취득하거나 제3자로 하여금 취득하게 한 자는 10년 이하의 징역 또는 2천만원 이하의 벌금에 처한다.</li>
+
+<br><br>
+        <li><strong>전자금융거래법:</strong>
+		
+<br><br>① 다음 각 호의 어느 하나에 해당하는 자는 7년 이하의 징역 또는 5천만원 이하의 벌금에 처한다.
+
+<ul>
+<br>
+<li>1. 접근매체를 위조하거나 변조한 자</li>
+
+<li>2. 위조되거나 변조된 접근매체를 판매알선·판매·수출 또는 수입하거나 사용한 자</li>
+
+<li>3. 분실되거나 도난된 접근매체를 판매알선·판매·수출 또는 수입하거나 사용한 자</li>
+
+<li>4. 전자금융거래를 위한 전자적 장치 또는 「정보통신망이용 촉진 및 정보보호 등에 관한 법률」 제2조제1항제1호의 규정에 따른 정보통신망에 침입하여 허위 그 밖의 부정한 방법으로 접근매체를 획득하거나 획득된 접근매체를 이용하여 전자금융거래를 한 자</li>
+
+<li>5. 강제로 빼앗거나, 횡령하거나, 사람을 속이거나 공갈하여 획득한 접근매체를 판매알선·판매·수출 또는 수입하거나 사용한 자</li>
+
+</ul>
+
+<br><br>
+ 
+② 전자화폐는 「형법」 제214조 내지 제217조에 정한 죄의 유가증권으로 보아 각 그 죄에 정한 형으로 처벌한다.
+
+<br><br>
+
+③ 제26조의 규정을 위반하여 전자금융거래 정보를 제공하거나, 누설하거나, 업무상 목적 외에 사용한 자(제28조제4항의 규정에 따라 이를 준용하는 선불전자지급수단을 발행하는 자를 포함한다)는 5년 이하의 징역 또는 3천만원 이하의 벌금에 처한다.
+
+<br><br> 
+
+④ 다음 각 호의 어느 하나에 해당하는 자는 3년 이하의 징역 또는 2천만원 이하의 벌금에 처한다. <개정 2008.12.31>
+<ul>
+<br>
+<li>1. 제6조제3항제1호를 위반하여 접근매체를 양도하거나 양수한 자</li>
+
+<li>2. 제6조제3항제2호를 위반하여 접근매체를 대여받거나 대여한 자</li>
+
+<li>3. 제6조제3항제3호를 위반한 질권설정자 또는 질권자</li>
+
+<li>4. 제6조제3항제4호를 위반하여 알선행위를 한 자</li>
+
+<li>5. 제28조 또는 제29조의 규정에 따라 허가를 받거나 등록을 하지 아니하고 그 업무를 행한 자</li>
+
+<li>6. 허위 그 밖의 부정한 방법으로 제28조 또는 제29조의 규정에 따라 허가를 받거나 등록을 한 자</li>
+
+<li>7. 제37조제3항제3호의 규정을 위반하여 다른 가맹점의 이름으로 전자화폐등에 의한 거래를 한 자</li>
+
+<li>8. 제37조제3항제5호의 규정을 위반하여 전자화폐등에 의한 거래를 대행한 자</li>
+
+<li>9. 제37조제4항의 규정을 위반하여 가맹점의 이름으로 전자화폐등에 의한 거래를 한 자</li>
+
+<li>10. 허위 그 밖의 부정한 방법으로 전자금융거래정보를 열람하거나 제공받은 자</li>
+
+</ul>
+
+<br><br>
+
+⑤ 다음 각 호의 어느 하나에 해당하는 자는 1년 이하의 징역 또는 1천만원 이하의 벌금에 처한다.</li>
+<ul>
+<br>
+
+<li>1. 삭제 <2008.12.31></li>
+
+<li>2. 제36조의 규정을 위반하여 전자화폐의 명칭을 사용한 자</li>
+
+<li>3. 제37조제1항의 규정을 위반하여 전자화폐등에 의한 거래를 이유로 재화 또는 용역의 제공을 거절하거나 이용자를 불리하게 대우한 자</li>
+
+<li>4. 제37조제2항의 규정을 위반하여 이용자에게 가맹점수수료를 부담하게 한 자</li>
+
+<li>5. 제37조제3항제4호의 규정을 위반하여 가맹점의 이름을 타인에게 빌려준 자</li>
+
+<li>6. 제45조제1항의 규정에 따른 인가를 받지 아니하고 동항 각 호의 어느 하나에 해당하는 행위를 한 자</li>
+
+</ul>
+<br><br>
+⑥ 제1항제1호 및 제2호의 미수범은 처벌한다.
+<br><br>
+
+⑦ 제1항 내지 제6항의 징역형과 벌금형은 병과할 수 있다.</li>
+    </ul>
+<br>
+    <h2>향후 계획</h2>
+    <ul>
+        <li>공식적인 보안 교육 프로젝트로 전환 가능성 검토</li>
+        <li>해외 서버 및 보안 규정을 준수하는 방식 고려</li>
+    </ul>
+<br>
+    <p>
+        <strong>추후 공지는</strong> 공식 웹사이트 및 커뮤니티를 통해 안내드릴 예정입니다.
+    </p>
+</div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="footer-links" id="contact">
+                <div>
+                    <h2>정보</h2>
+					<p>&copy; 2025 PX4T9</p>					
+					<p>Powered by GitHub</p>
+					<p>Powered by Python</p>
+                </div>
+                <div>
+                    <h3>문의하기</h3>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+                </div>
+                <div>
+                    <h3>커뮤니티</h3>
+					<p><a href="https://youtube.com/@px4t9">YouTube</a></p>
+					<p><a href="https://discord.gg/5CfsJkszNW">Discord (서비스 종료됨)</a></p>
+					<p><a href="https://github.com/px4t9">Github</a></p>
+                </div>
+                <div>
+                    <h3>PX4T9</h3>
+					<p><a href="privacypolicy.html">개인정보 처리 방침</a></p>
+					<p><a href="terms.html">이용약관</a></p>
+					<p><a href="license.html">라이선스</a></p>
+                </div>
+        </div>
+		         <div>
+					<p>&copy; 2023 - 2025 PX4T9 - All Rights Reserved</p>
+			</div>
+    </div> <!-- End of Main Container -->
+    <script>
+        // Show the popup when the page loads
+        window.onload = function() {
+            document.getElementById("popupOverlay").classList.add("active");
+        };
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById("popupOverlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>

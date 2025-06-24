@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PX4T9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e; /* Single dark background color */
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c; /* Vertical line on the left */
+            border-right: 2px solid #563d7c; /* Vertical line on the right */
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #1f1a2e;
+            padding: 20px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            color: #d3d0e1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #563d7c;
+        }
+        .download-button {
+            background-color: #563d7c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #563d7c;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #ffffff;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #563d7c;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            text-align: left;
+        }
+        .footer-links h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .footer-links a {
+            color: #d3d0e1;
+            text-decoration: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d3d0e1;
+        }
+        /* General page styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1a2e;
+            color: #d3d0e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            border-left: 2px solid #563d7c;
+            border-right: 2px solid #563d7c;
+            box-sizing: border-box;
+        }
+        
+        /* Popup modal styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+        .popup-content {
+            background-color: #2a2340;
+            color: #d3d0e1;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #563d7c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .popup-content p {
+            font-size: 14px;
+            color: #d3d0e1;
+        }
+        .popup-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+        .popup-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .popup-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .accept-btn {
+            background-color: #563d7c;
+            color: #ffffff;
+        }
+        .settings-btn {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        /* Show the popup when active */
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Updated CSS for "정보" Section without Hover Effect */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #2a2340;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .info-card h4 {
+            margin: 0;
+            color: #d3d0e1;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .info-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info-card a:hover {
+            color: #5b9bd5;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+<!-- Header Section -->
+        <div class="header">
+            <div class="header-content">
+				<h1><img src="images/px.ico" alt="PX4T9 Logo" style="width: 30px; height: 30px;" /> PX4T9</h1>
+                <div class="nav">
+                    <a href="main.html">홈</a>
+		<a href="privacypolicy.html">개인정보 처리 방침</a>
+		<a href="terms.html">이용약관</a>
+		<a href="license.html">라이선스</a>
+		<a href="Law.html">사용자 보호 법률</a>
+                </div>
+            </div>
+        </div>
+		
+        <!-- Content Section -->
+        <div class="content">
+		
+            <!-- Terms of Use Section -->
+            <div class="section" id="terms">
+                <h2>이용약관</h2>
+               1. 목적 및 사용 제한
+본 도구(이하 "소프트웨어")는 사이버 보안의 기초 원리 및 모의해킹 개념을 이해하고, 이를 통해 개인의 보안을 강화하기 위한 학습 및 연구 목적으로만 제공됩니다. 본 소프트웨어의 사용 목적은 교육 및 연구에 국한되며, 그 외 모든 불법적 활동, 악의적 목적, 타인의 시스템이나 데이터를 손상시키는 행위는 엄격히 금지됩니다. 사용자는 본 소프트웨어를 불법적으로 이용하지 않을 것에 동의하며, 해당 행위를 위반할 경우 법적 처벌을 받을 수 있습니다. 또한, 본 소프트웨어를 사용하기 위해서는 해당 국가 및 지역의 법률을 준수해야 하며, 국가별 법규를 사전에 확인하는 것이 사용자의 책임입니다.
+<br></br>
+2. 법적 책임 및 사용자 책임
+불법적인 해킹 시도는 다양한 국내 및 국제법을 위반하는 행위로 간주될 수 있으며, 해당 법적 문제나 책임은 전적으로 사용자 본인에게 귀속됩니다. 본 소프트웨어의 사용으로 인해 발생하는 법적 문제, 금전적 손해, 데이터 유출, 시스템 손상 등에 대해 제작자 및 배포자는 일체의 책임을 지지 않습니다. 사용자는 소프트웨어 사용 시 다음 사항을 반드시 준수해야 합니다:
+
+사용자는 반드시 본인이 소유하거나 명확한 서면 허가를 받은 시스템에서만 본 소프트웨어를 사용할 수 있습니다.
+
+본 소프트웨어를 사용하여 타인의 시스템에 무단으로 접근하는 행위는 불법이며, 관련 법률에 따라 처벌될 수 있습니다.
+
+본 소프트웨어를 악의적인 목적으로 사용하여 데이터를 수집, 변조, 삭제하거나 무단 접근을 시도하는 행위는 절대 금지됩니다.
+
+사용자는 모든 보안 관련 법률을 준수해야 하며, 본 소프트웨어의 사용으로 인해 발생하는 모든 법적 책임을 본인이 부담해야 합니다.
+
+본 소프트웨어를 사용하여 생성된 어떠한 결과물도 불법적인 목적으로 유포하거나 활용할 수 없습니다.
+<br></br>
+3. 테스트 환경 및 보안 수칙
+본 소프트웨어는 사용자가 보안 연구 및 학습 목적으로 자신이 소유한 시스템에서만 사용할 것을 권장합니다. 사용자는 본 소프트웨어를 사용하는 동안 보안 수칙을 준수해야 하며, 다음과 같은 조치를 취해야 합니다:
+
+최신 보안 패치를 적용하고, 바이러스 백신 소프트웨어를 최신 상태로 유지해야 합니다.
+
+안전한 네트워크 환경에서 소프트웨어를 사용하며, 불법적인 웹사이트 및 피싱 공격으로부터 보호되는 환경을 유지해야 합니다.
+
+타인의 데이터 및 네트워크에 피해를 주지 않도록 해야 하며, 실험 대상 시스템이 무단 침입에 해당되지 않도록 주의해야 합니다.
+
+연구 및 실험을 수행할 때 관련 법률 및 윤리적 기준을 반드시 준수해야 합니다.
+<br></br>
+4. 소프트웨어 보증 및 책임 제한
+본 소프트웨어는 "있는 그대로(AS IS)" 제공되며, 특정 성능이나 안정성을 보장하지 않습니다. 소프트웨어의 사용으로 인해 발생할 수 있는 예상치 못한 문제(예: 시스템 장애, 데이터 손실, 네트워크 중단 등)에 대해 제작자와 배포자는 아무런 책임을 지지 않습니다. 사용자는 본 소프트웨어 사용으로 인해 발생할 수 있는 모든 리스크를 스스로 감수해야 하며, 이에 대한 법적 조치 및 보상을 요구할 수 없습니다. 또한, 본 소프트웨어의 사용으로 인해 제3자가 피해를 입을 경우, 이에 대한 법적 책임은 전적으로 사용자에게 있습니다.
+<br></br>
+5. 건강 및 안전 관련 경고
+본 소프트웨어 사용 중 일부 사용자들에게는 광과민성 반응 등 신체적 위험이 발생할 수 있습니다. 민감성 증후군이나 광과민성 발작, 혹은 빛에 민감한 기타 신체 반응을 보이는 사용자는 본 소프트웨어 사용을 자제하거나 의사의 조언을 받는 것이 좋습니다. 제작자와 배포자는 이러한 신체적 반응으로 인해 발생하는 문제에 대해 책임을 지지 않으며, 사용자는 본인의 건강 상태를 고려하여 안전하게 소프트웨어를 사용해야 합니다. 또한, 장시간 집중적인 사용으로 인해 발생할 수 있는 피로 및 건강 문제에 주의해야 합니다.
+<br></br>
+6. 약관 동의 및 변경
+본 소프트웨어를 다운로드하거나 사용하는 순간, 사용자는 본 이용 약관에 동의한 것으로 간주됩니다. 제작자 및 배포자는 필요에 따라 본 약관을 변경할 권리를 가지며, 변경된 약관은 즉시 효력이 발생합니다. 사용자는 정기적으로 본 약관을 검토하고, 변경된 내용에 대해 숙지할 책임이 있습니다. 약관 변경 사항이 사용자에게 불리한 경우, 사용자에게 사전 공지될 수 있습니다.
+<br></br>
+7. 법적 준거 및 분쟁 해결
+본 소프트웨어와 관련하여 발생하는 법적 분쟁은 대한민국 법률을 따르며, 관할 법원은 대한민국 내 법원으로 합니다. 사용자는 본 약관을 위반하여 발생하는 법적 문제에 대해 제작자 및 배포자가 어떠한 법적 책임도 지지 않음을 인정합니다. 또한, 사용자가 본 소프트웨어를 타국에서 사용할 경우 해당 국가의 법률을 준수할 책임이 있습니다.
+<br></br>
+8. 데이터 보호 및 프라이버시
+본 소프트웨어는 어떠한 형태의 사용자 개인 정보를 수집하지 않으며, 사용자의 기밀 데이터 보호를 최우선으로 합니다. 사용자는 소프트웨어를 사용하는 동안 개인 데이터가 보호될 수 있도록 주의해야 하며, 민감한 정보를 입력하거나 저장하는 것을 피해야 합니다
+            </div>
+            
+
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="footer-links" id="contact">
+                <div>
+                    <h2>정보</h2>
+					<p>&copy; 2025 PX4T9</p>					
+					<p>Powered by GitHub</p>
+					<p>Powered by Python</p>
+                </div>
+                <div>
+                    <h3>문의하기</h3>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+					<p>문의 서비스 종료됨</p>
+                </div>
+                <div>
+                    <h3>커뮤니티</h3>
+					<p><a href="https://youtube.com/@px4t9">YouTube</a></p>
+					<p><a href="https://discord.gg/5CfsJkszNW">Discord (서비스 종료됨)</a></p>
+					<p><a href="https://github.com/px4t9">Github</a></p>
+                </div>
+                <div>
+                    <h3>PX4T9</h3>
+					<p><a href="privacypolicy.html">개인정보 처리 방침</a></p>
+					<p><a href="terms.html">이용약관</a></p>
+					<p><a href="license.html">라이선스</a></p>
+                </div>
+        </div>
+		         <div>
+					<p>&copy; 2023 - 2025 PX4T9 - All Rights Reserved</p>
+			</div>
+    </div> <!-- End of Main Container -->
+    <script>
+        // Show the popup when the page loads
+        window.onload = function() {
+            document.getElementById("popupOverlay").classList.add("active");
+        };
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById("popupOverlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>
